@@ -1,0 +1,13 @@
+--- #java installation
+- name: playbook of java
+  hosts: all
+  become: true
+  connection: ssh
+  user: ansible
+  
+  vars:
+    pkgname: java
+
+  tasks:
+    - name: install java into webservers
+      action: yum name='{{pkgname}}' state=latest

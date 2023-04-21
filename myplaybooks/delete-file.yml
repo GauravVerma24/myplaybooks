@@ -1,0 +1,12 @@
+--- # delete file
+- name: my test playbook
+  hosts: all
+  become: yes
+  user: ansible
+  connection: ssh
+
+  tasks:
+    - name: deleting a file
+      file:
+        path: /home/ansible/gkfile
+        state: absent

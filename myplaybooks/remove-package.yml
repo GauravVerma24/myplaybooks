@@ -1,0 +1,12 @@
+--- # delete or uninstall docker
+- name: test playbook
+  hosts: all
+  become: yes
+  connection: ssh
+  user: ansible
+
+  tasks:
+    - name: deleting software
+      yum:
+       name: docker
+       state: absent  

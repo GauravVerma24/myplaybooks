@@ -1,0 +1,12 @@
+--- # create a file
+- name: my test playbook
+  hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: creating a file
+      file:
+        path: /home/ansible/demo_file
+        state: touch

@@ -1,0 +1,15 @@
+--- # delete httpd s/w and stop service
+- name: delete s/w
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: delete httpd software
+      yum:
+        name: httpd
+        state: absent
+
+    - name: stopping the service
+      service:
+         name: httpd
+         state: stopped

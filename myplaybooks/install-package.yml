@@ -1,0 +1,12 @@
+--- # installing package / software
+- name: test playbook
+  hosts: webservers
+  become: yes
+  user: ansible
+  connection: ssh
+
+  tasks:
+    - name: install docker software into hosts
+      yum:
+        name: docker
+        state: present

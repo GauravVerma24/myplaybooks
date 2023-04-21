@@ -1,0 +1,13 @@
+--- # copy file module
+- name: my test playbook
+  hosts: all
+  become: true
+  user: ansible
+  connection: ssh
+
+  tasks:
+    - name: copying a file from server to hosts
+      copy:
+       src: /home/ansible/gkfile
+       dest: /home/ansible
+

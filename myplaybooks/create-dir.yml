@@ -1,0 +1,9 @@
+--- 
+- hosts: webservers
+  become: yes
+
+  tasks:
+    - name: creating a directory
+      file:
+        path: /home/ansible/dir1
+        state: directory

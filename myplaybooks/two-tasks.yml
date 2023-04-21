@@ -1,0 +1,18 @@
+--- # convert normal linux to webservers
+- name: test playbook
+  hosts: all
+  become: yes
+  connection: ssh
+  user: ansible
+
+  tasks:
+    - name: installing software
+      yum:
+        name: httpd
+        state: installed
+
+    - name: start service
+      service:
+        name: httpd
+        state: started
+

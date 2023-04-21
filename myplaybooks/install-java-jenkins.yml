@@ -1,0 +1,37 @@
+--- #install java , download jenkins and install
+- hosts: webservers
+  become: true
+  connection: ssh
+  user: ansible
+
+  tasks:
+    - name: install java software
+      yum:
+        name: java
+        state: installed
+
+    - name: install wget command
+      yum:
+        name: wget
+        state: present
+
+    - name: download jenkins
+      get_url:
+         url: sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+         dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: download jenkins key
+      rpm_key:
+         state: present
+         key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+    - name: install jenkins s/w
+      yum:
+         name: jenkins
+         state: installed
+
+    - name: start jenkins service
+      service:
+         name: jenkins
+         state: started
+         enable: yes
